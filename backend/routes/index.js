@@ -2,6 +2,15 @@ var express = require('express');
 var router = express.Router();
 const data = require('../models/dbConnection');
 
+router.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+});
+
+
 // Get all users
 router.get('/get_users', (request, response) => {
     data.query('SELECT * FROM users', (error, result) => {
