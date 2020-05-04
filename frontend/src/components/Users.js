@@ -42,8 +42,8 @@ class Users extends React.Component {
     render() {
         return (
             <section>
-                <div class="container">
-                    <table class="table table-hover">
+                <div className="container">
+                    <table className="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">Nombres</th>
