@@ -20,6 +20,16 @@ class Users extends React.Component {
         })
     }
 
+
+    removeUser(id) {
+        fetch(`http://localhost:3001/delete_user/${id}`, {
+            method: "DELETE"
+        }).then(response => {
+            let data = this.state.data.filter(data => data.id !== id);
+            this.setState({ data: data });
+        });
+    };
+
     parseData() {
         if (this.state.data) {
             return this.state.data.map(((value, i) => {
@@ -29,13 +39,10 @@ class Users extends React.Component {
                         <td>{value.email}</td>
                         <td>{value.birthdate}</td>
                         <td>{value.creation_date}</td>
+                        <td><a className="btn btn-warning" onClick={this.removeUser.bind(this, value.id)}>Eliminar</a></td>
                     </tr>
                 )
             }))
-        } else {
-            return (
-                <h2>Aun no hay usuarios en la base de datos.</h2>
-            )
         }
     }
 
@@ -50,6 +57,7 @@ class Users extends React.Component {
                                 <th scope="col">Email</th>
                                 <th scope="col">Fecha de nacimiento</th>
                                 <th scope="col">Fecha de creacion</th>
+                                <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>

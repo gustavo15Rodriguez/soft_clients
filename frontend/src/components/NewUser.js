@@ -20,11 +20,11 @@ class NewUser extends React.Component {
                 },
                 body: JSON.stringify(this.state)
             }
-            console.log(this.state)
             let res = await fetch('http://localhost:3001/add_user', config)
             let json = await res.json()
 
             console.log(json)
+     
         } catch (error) {
 
         }
