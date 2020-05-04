@@ -13,10 +13,30 @@ class Users extends React.Component {
     fecthUsers = async () => {
         let response = await fetch('http://localhost:3001/get_users')
         let data = await response.json()
+        console.log(data);
 
         this.setState({
             data
         })
+    }
+
+    parseData() {
+        if (this.state.data) {
+            return this.state.data.map(((value, i) => {
+                return (
+                    <tr key={i}>
+                        <td>{value.name}</td>
+                        <td>{value.email}</td>
+                        <td>{value.creation_date}</td>
+                        <td>{value.creation_date}</td>
+                    </tr>
+                )
+            }))
+        } else {
+            return (
+                <h2>Aun no hay usuarios en la base de datos.</h2>
+            )
+        }
     }
 
     render() {
@@ -33,12 +53,9 @@ class Users extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Juan carlos</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                            </tr>
+                            {
+                                this.parseData()
+                            }
                         </tbody>
                     </table>
                 </div>
