@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom'
             
 class NewUser extends React.Component {
 
+    date = new Date();
+
     state = {
-        creation_date: '2012-12-23'
+        creation_date: this.date.getFullYear() + "-" + (this.date.getMonth() + 1) + "-" + this.date.getDate()
     }
 
     handleSubmit = async e => {

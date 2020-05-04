@@ -27,7 +27,7 @@ class Users extends React.Component {
                     <tr key={i}>
                         <td>{value.name}</td>
                         <td>{value.email}</td>
-                        <td>{value.creation_date}</td>
+                        <td>{value.birthdate}</td>
                         <td>{value.creation_date}</td>
                     </tr>
                 )
