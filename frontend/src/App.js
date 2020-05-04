@@ -1,5 +1,6 @@
 import React from 'react';
 import './assets/css/App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 // Components
 import Navbar from './components/Navbar';
@@ -10,12 +11,18 @@ function App() {
     
     return (
         <div className="App">
-            <Navbar />
 
-            <NewUser />
+            <BrowserRouter>
+                <Navbar />
+                <br />
+                <h1>Welcome to Soft Clients</h1>
+                <br /> 
+                <Switch>
+                    <Route exact path="/crm" component={ Users } />
+                    <Route exact path="/crm/new_client" component={ NewUser } />
+                </Switch>
+            </BrowserRouter>
             
-            <Users />
-
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
             
 class NewUser extends React.Component {
 
@@ -79,7 +80,7 @@ class NewUser extends React.Component {
 
                             <div className="form-group">
                                 <button type="submit" className="btn btn-primary">Crear usuario</button>
-                                <button type="submit" className="btn btn-warning">Cancelar</button>
+                                <Link className="btn btn-warning" to="/crm">Cancelar</Link>
                             </div>
                         </form>
                     </div>
