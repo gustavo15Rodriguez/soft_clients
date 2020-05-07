@@ -20,7 +20,6 @@ class UpdateUser extends React.Component {
             this.setState({
                 "name": data[0].name,
                 "email": data[0].email,
-                "birthdate": data[0].birthdate,
             })
         }
     }
