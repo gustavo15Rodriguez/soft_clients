@@ -59,6 +59,7 @@ class UpdateUser extends React.Component {
         if (this.state != null) {
             return (
                 <div className="container">
+                    <br />
                     <div className="card">
                         <h5 className="card-header">Actualizar usuarios</h5>
                         <div className="card-body">
@@ -110,7 +111,10 @@ class UpdateUser extends React.Component {
             )
         }else {
             return (
-                <h1>Cargando datos...</h1>
+                <div className="container">
+                    <br />
+                    <h1>Cargando datos...</h1>
+                </div>
             )
         }
     }

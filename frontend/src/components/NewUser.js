@@ -41,6 +41,7 @@ class NewUser extends React.Component {
             <div className="container">
 
                 <div className="card">
+                    <br />
                     <h5 className="card-header">Agregar usuarios</h5>
                     <div className="card-body">
                         <form onSubmit={ this.handleSubmit } >
