@@ -21,7 +21,7 @@ router.get('/get_users', (request, response) => {
 });
 
 // Get user by id
-router.get('/users/:id', (request, response) => {
+router.get('/user/:id', (request, response) => {
     const id = request.params.id;
 
     data.query('SELECT * FROM users WHERE id = ?', id, (error, result) => {

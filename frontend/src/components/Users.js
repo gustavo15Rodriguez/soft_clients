@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 class Users extends React.Component {
 
@@ -7,10 +8,10 @@ class Users extends React.Component {
     }
 
     async componentDidMount() {
-        await this.fecthUsers()
+        await this.fetchUsers()
     }
 
-    fecthUsers = async () => {
+    fetchUsers = async () => {
         let response = await fetch('http://localhost:3001/get_users')
         let data = await response.json()
         console.log(data);
@@ -19,7 +20,6 @@ class Users extends React.Component {
             data
         })
     }
-
 
     removeUser(id) {
         fetch(`http://localhost:3001/delete_user/${id}`, {
@@ -34,12 +34,20 @@ class Users extends React.Component {
         if (this.state.data) {
             return this.state.data.map(((value, i) => {
                 return (
-                    <tr key={i}>
+                    <tr key={value.id}>
                         <td>{value.name}</td>
                         <td>{value.email}</td>
                         <td>{value.birthdate}</td>
                         <td>{value.creation_date}</td>
-                        <td><a className="btn btn-warning" onClick={this.removeUser.bind(this, value.id)}>Eliminar</a></td>
+                        <td><a
+                            className="btn btn-warning"
+                            onClick={this.removeUser.bind(this, value.id)}>Eliminar
+                        </a>
+                            <Link
+                                className="btn btn-info"
+                                to={`/crm/update/${value.id}`} >Actualizar
+                            </Link>
+                        </td>
                     </tr>
                 )
             }))
