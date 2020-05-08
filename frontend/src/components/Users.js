@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 class Users extends React.Component {
 
     state = {
-        data: []
+        data: [],
+        searchText: ""
     }
 
     async componentDidMount() {
@@ -32,7 +33,13 @@ class Users extends React.Component {
 
     parseData() {
         if (this.state.data) {
-            return this.state.data.map(((value, i) => {
+            let filteredValues = this.state.data.filter(
+                (data) => {
+                    return data.name.toLowerCase().indexOf(this.state.searchText.toLowerCase()) !== -1;
+                }
+            )
+
+            return filteredValues.map(((value, i) => {
                 return (
                     <tr key={value.id}>
                         <td>{value.name}</td>
@@ -54,11 +61,23 @@ class Users extends React.Component {
         }
     }
 
+    updateSearch(evt) {
+        this.setState({searchText: evt.target.value.substr(0, 30) })
+    }
+
     render() {
         return (
             <section>
                 <div className="container">
                     <br />
+                    <input
+                        className="form-control mr-sm-2"
+                        type="text"
+                        placeholder="Search names..."
+                        value={ this.state.searchText }
+                        onChange={ this.updateSearch.bind(this) }
+                    />
+                    <hr />
                     <table className="table table-hover">
                         <thead>
                             <tr>
