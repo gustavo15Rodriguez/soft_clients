@@ -50,7 +50,9 @@ class UpdateUser extends React.Component {
             })
 
         } catch (error) {
-
+            this.setState({
+                "statusText": "error"
+            })
         }
     };
 

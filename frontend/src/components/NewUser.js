@@ -26,7 +26,9 @@ class NewUser extends React.Component {
                 "statusText": res.statusText
             })
         } catch (error) {
-
+            this.setState({
+                "statusText": "error"
+            })
         }
     }
 
