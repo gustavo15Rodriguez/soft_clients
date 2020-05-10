@@ -15,7 +15,6 @@ class Users extends React.Component {
     fetchUsers = async () => {
         let response = await fetch('http://localhost:3001/get_users')
         let data = await response.json()
-        console.log(data);
 
         this.setState({
             data

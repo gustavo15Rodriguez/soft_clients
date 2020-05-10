@@ -47,7 +47,7 @@ router.put('/update_user/:id', (request, response) => {
     data.query('UPDATE users SET ? WHERE id = ?', [request.body, id], (error, result) => {
         if (error) throw error;
 
-        response.send('User updated successfully.');
+        response.status(201).send('User updated successfully.');
     });
 });
 

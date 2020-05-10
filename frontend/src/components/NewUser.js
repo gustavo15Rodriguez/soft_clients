@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import Popup from "./Popup";
             
 class NewUser extends React.Component {
 
@@ -21,10 +22,9 @@ class NewUser extends React.Component {
                 body: JSON.stringify(this.state)
             }
             let res = await fetch('http://localhost:3001/add_user', config)
-            let json = await res.json()
-
-            console.log(json)
-     
+            this.setState({
+                "statusText": res.statusText
+            })
         } catch (error) {
 
         }
@@ -40,6 +40,8 @@ class NewUser extends React.Component {
         return (
             <div className="container">
                 <br />
+                <Popup statusText={ this.state.statusText } />
+                <hr />
                 <div className="card">
                     <h5 className="card-header">Agregar usuarios</h5>
                     <div className="card-body">
